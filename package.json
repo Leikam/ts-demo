@@ -10,12 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/Leikam/ts-demo.git"
   },
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "@types/node": "^26.6.5",
     "typescript": "^7.0.2"
   }
 }
