@@ -32,7 +32,7 @@ const TENTHS_LESS_THAN_HUNDRED: string[] = [
  */
 function toWords(number: string | number, asOrdinal?: boolean): string {
   let words: string;
-  let num = parseInt(number as string, 10);
+  let num: number = parseInt(number as string, 10);
 
   if (!isFinite(num)) {
     throw new TypeError(
@@ -49,8 +49,8 @@ function toWords(number: string | number, asOrdinal?: boolean): string {
 }
 
 function generateWords(number: number, words?: string[] ): string {
-  let remainder: number;
-  let word: string;
+  let remainder: number = 0;
+  let word: string = '';
 
   // We’re done
   if (number === 0) {
@@ -104,9 +104,7 @@ function generateWords(number: number, words?: string[] ): string {
     word = generateWords(Math.floor(number / ONE_QUADRILLION)) + ' quadrillion,';
   }
 
-  if (word != null) {
-    words.push(word);
-  }
+  words.push(word);
   return generateWords(remainder, words);
 }
 
