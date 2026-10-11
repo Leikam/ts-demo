@@ -1,8 +1,8 @@
 'use strict';
 
-var makeOrdinal = require('./makeOrdinal');
-var isFinite = require('./isFinite');
-var isSafeNumber = require('./isSafeNumber');
+const makeOrdinal = require('./makeOrdinal');
+const isFinite = require('./isFinite');
+const isSafeNumber = require('./isSafeNumber');
 
 const TEN: number = 10;
 const ONE_HUNDRED: number = 100;
@@ -30,9 +30,9 @@ const TENTHS_LESS_THAN_HUNDRED: string[] = [
  * @param {boolean} [asOrdinal] - Deprecated, use toWordsOrdinal() instead!
  * @returns {string}
  */
-function toWords(number: string | number, asOrdinal: boolean): string {
-  let words;
-  let num = typeof number === 'string' ? parseInt(number, 10) : number;
+function toWords(number: string | number, asOrdinal?: boolean): string {
+  let words: string;
+  let num = parseInt(number as string, 10);
 
   if (!isFinite(num)) {
     throw new TypeError(
@@ -48,9 +48,9 @@ function toWords(number: string | number, asOrdinal: boolean): string {
   return asOrdinal ? makeOrdinal(words) : words;
 }
 
-function generateWords(number: number): string {
-  let remainder, word,
-    words = arguments[1];
+function generateWords(number: number, words?: string[] ): string {
+  let remainder: number;
+  let word: string;
 
   // We’re done
   if (number === 0) {
@@ -68,11 +68,11 @@ function generateWords(number: number): string {
 
   if (number < 20) {
     remainder = 0;
-    word = LESS_THAN_TWENTY[number];
+    word = LESS_THAN_TWENTY[number]!;
 
   } else if (number < ONE_HUNDRED) {
     remainder = number % TEN;
-    word = TENTHS_LESS_THAN_HUNDRED[Math.floor(number / TEN)];
+    word = TENTHS_LESS_THAN_HUNDRED[Math.floor(number / TEN)]!;
     // In case of remainder, we need to handle it here to be able to add the “-”
     if (remainder) {
       word += '-' + LESS_THAN_TWENTY[remainder];
@@ -101,11 +101,12 @@ function generateWords(number: number): string {
 
   } else if (number <= MAX) {
     remainder = number % ONE_QUADRILLION;
-    word = generateWords(Math.floor(number / ONE_QUADRILLION)) +
-      ' quadrillion,';
+    word = generateWords(Math.floor(number / ONE_QUADRILLION)) + ' quadrillion,';
   }
 
-  words.push(word);
+  if (word != null) {
+    words.push(word);
+  }
   return generateWords(remainder, words);
 }
 
