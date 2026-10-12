@@ -8,10 +8,10 @@ const TEN: number = 10;
 const ONE_HUNDRED: number = 100;
 const ONE_THOUSAND: number = 1_000;
 const ONE_MILLION: number = 1_000_000;
-const ONE_BILLION: number = 1_000_000_000;            //         1.000.000.000 (9)
-const ONE_TRILLION: number = 1000_000_000_000;        //     1.000.000.000.000 (12)
-const ONE_QUADRILLION: number = 1000_000_000_000_000;   // 1.000.000.000.000.000 (15)
-const MAX: number = 9_007_199_254_740_992;             // 9.007.199.254.740.992 (15)
+const ONE_BILLION: number = 1_000_000_000;                //         1.000.000.000 (9)
+const ONE_TRILLION: number = 1000_000_000_000;            //     1.000.000.000.000 (12)
+const ONE_QUADRILLION: number = 1000_000_000_000_000;     // 1.000.000.000.000.000 (15)
+const MAX: number = 9_007_199_254_740_992;                // 9.007.199.254.740.992 (15)
 
 const LESS_THAN_TWENTY: string[] = [
   'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
